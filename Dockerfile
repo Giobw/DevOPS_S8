@@ -1,5 +1,4 @@
-FROM tomcat:10.1-jdk17
-RUN rm -rf /usr/local/tomcat/webapps/*
-COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+FROM openjdk:17-jdk-slim
+COPY target/*.war app.war
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+ENTRYPOINT ["java", "-jar", "/app.war"]
